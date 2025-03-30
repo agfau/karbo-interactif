@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Le Voyage de Karbo</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f4f9f6; color: #222; padding: 2rem; line-height: 1.6; }
+    .container { max-width: 800px; margin: auto; background: white; padding: 2rem; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+    h1 { color: #2c786c; text-align: center; }
+    .choice { display: block; margin: 1rem 0; padding: 0.75rem; background: #e0f2f1; border: 1px solid #b2dfdb; border-radius: 8px; text-decoration: none; color: #004d40; font-weight: bold; }
+    .choice:hover { background: #b2dfdb; }
+    .section { display: none; }
+    .section.active { display: block; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Le Voyage de Karbo</h1>
+    <div id="start" class="section active">
+      <p>Tu es Karbo, un atome de carbone. Tu dormais dans une roche calcaire des montagnes suisses... mais aujourd'hui, tout va changer !</p>
+      <a class="choice" href="#" onclick="goTo('four')">Commencer l'aventure 🔥</a>
+    </div>
+
+    <div id="four" class="section">
+      <p>Tu es extrait d'une roche et chauffé à plus de 1400°C dans un four. Tu perds ton calcium et t'envoles avec deux oxygènes.</p>
+      <p>Quelle molécule es-tu devenu ?</p>
+      <a class="choice" href="#" onclick="goTo('foret')">A) CO₂</a>
+      <a class="choice" href="#" onclick="goTo('erreur')">B) CO</a>
+      <a class="choice" href="#" onclick="goTo('erreur')">C) CH₄</a>
+    </div>
+
+    <div id="foret" class="section">
+      <p>Bravo ! Tu flottes au-dessus de la Suisse. Tu approches une forêt du Valais. Une feuille t'attire par son stomate.</p>
+      <p>Que fais-tu ?</p>
+      <a class="choice" href="#" onclick="goTo('feuille')">A) Tu entres dans la feuille</a>
+      <a class="choice" href="#" onclick="goTo('lac')">B) Tu vas vers un lac</a>
+      <a class="choice" href="#" onclick="goTo('erreur')">C) Tu montes dans la haute atmosphère</a>
+    </div>
+
+    <div id="feuille" class="section">
+      <p>Tu es dans un chloroplaste ! La lumière du soleil te transforme. Tu es combiné à d'autres atomes.</p>
+      <p>Quelle molécule deviens-tu ?</p>
+      <a class="choice" href="#" onclick="goTo('glucose')">A) Glucose</a>
+      <a class="choice" href="#" onclick="goTo('erreur')">B) Dioxygène</a>
+      <a class="choice" href="#" onclick="goTo('erreur')">C) Éthanol</a>
+    </div>
+
+    <div id="glucose" class="section">
+      <p>Tu es du glucose ! Transporté par la sève, tu arrives dans une racine. Un chevreuil mange la plante…</p>
+      <p>Que deviens-tu ?</p>
+      <a class="choice" href="#" onclick="goTo('co2')">A) Expiré sous forme de CO₂</a>
+      <a class="choice" href="#" onclick="goTo('methane')">B) Transformé en CH₄</a>
+      <a class="choice" href="#" onclick="goTo('erreur')">C) Intégré à l’ADN</a>
+    </div>
+
+    <div id="co2" class="section">
+      <p>Tu es revenu dans l'atmosphère ! Tu as bouclé un cycle court du carbone 🌍</p>
+      <a class="choice" href="#" onclick="goTo('start')">🔁 Rejouer</a>
+    </div>
+
+    <div id="methane" class="section">
+      <p>Tu es devenu CH₄ dans le ventre d'une vache 🐄. Tu seras bientôt transformé en CO₂. Cycle biologique accompli !</p>
+      <a class="choice" href="#" onclick="goTo('start')">🔁 Rejouer</a>
+    </div>
+
+    <div id="lac" class="section">
+      <p>Tu tombes dans le lac Léman et te dissous dans l’eau froide… Tu y resteras peut-être des années.</p>
+      <a class="choice" href="#" onclick="goTo('start')">🔁 Rejouer</a>
+    </div>
+
+    <div id="erreur" class="section">
+      <p>❌ Mauvais choix. Essaie encore !</p>
+      <a class="choice" href="#" onclick="history.back()">⬅️ Retour</a>
+    </div>
+  </div>
+
+  <script>
+    function goTo(id) {
+      document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+    }
+  </script>
+</body>
+</html>
